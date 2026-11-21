@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": "1.0",
+  "id": "checkout-outage--seed-1",
+  "mode": "demo",
+  "engine": "scripted",
+  "seed": "1",
+  "generatedAt": "2026-01-01T09:00:00.000Z",
+  "case": {
+    "id": "checkout-outage",
+    "title": "The March 14 Checkout Outage",
+    "claim": "The March 14 checkout outage was caused by the payment vendor's certificate rotation, not by our 08:55 deploy.",
+    "background": "On Thursday, March 14, card checkout failed for 45 minutes between 09:02 and 09:47 UTC. About 3,900 orders were lost or abandoned. Two changes landed within five minutes of each other: our own release of the checkout service at 08:55, and a certificate rotation by our payment vendor at 09:00.\n\nThe postmortem needs one answer before it can assign corrective actions: which change caused the outage. This trial puts the vendor theory to the test.",
+    "burden": "preponderance"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "title": "Load balancer TLS error log",
+      "kind": "log",
+      "source": "Priya Shah, SRE on call",
+      "reliability": 0.92,
+      "favors": "prosecution",
+      "summary": "TLS handshake failures against the vendor endpoint started at 09:02:11, two minutes after the vendor rotation and seven minutes after our deploy.",
+      "quote": "Every failed request in the window ends with the same error: unable to get local issuer certificate.",
+      "weakness": "The excerpt covers only the us-east region, one of three regions that serve checkout.",
+      "rebuttal": "The us-west and eu-central logs show the same error starting within the same minute; they were left out of the excerpt for length, not because they differ.",
+      "impact": 0.4
+    },
+    {
+      "id": "E2",
+      "title": "Vendor change notice CN-5531",
+      "kind": "document",
+      "source": "Ellen Ford, vendor change manager",
+      "reliability": 0.85,
+      "favors": "prosecution",
+      "summary": "The vendor rotated the certificates for its API endpoints starting at 09:00 UTC and moved to a new intermediate certificate authority.",
+      "quote": "Rotation of TLS certificates for api.payments-vendor.example began at 09:00 UTC and introduced a new intermediate CA.",
+      "weakness": "The notice was published at 11:40 UTC, almost two hours after checkout recovered.",
+      "rebuttal": "The 09:00 start time comes from the vendor's change system record, not from when the notice was posted.",
+      "impact": 0.3
+    },
+    {
+      "id": "E3",
+      "title": "Rollback and recovery measurements",
+      "kind": "data",
+      "source": "Marco Reyes, incident commander",
+      "reliability": 0.88,
+      "favors": "prosecution",
+      "summary": "Rolling back our 08:55 deploy at 09:20 did not change the error rate. Errors stopped at 09:47, within a minute of adding the vendor's new intermediate certificate to our trust bundle.",
+      "quote": "The error rate on rolled-back pods was 96.8 percent, against 97.1 percent on pods still running v412.",
+      "weakness": "The rollback was partial; two of twelve pods kept the new build for eleven extra minutes.",
+      "rebuttal": "The ten pods that did roll back failed at the same rate as the two that did not, which is the comparison that matters.",
+      "impact": 0.35
+    },
+    {
+      "id": "E4",
+      "title": "Statement of the checkout on-call engineer",
+      "kind": "testimony",
+      "source": "Jordan Kim, checkout on-call engineer",
+      "reliability": 0.6,
+      "favors": "defense",
+      "summary": "The on-call engineer saw connection pool warnings from the new HTTP client right after the 08:55 deploy and suspected the deploy first.",
+      "quote": "Right after the deploy finished I saw connection pool warnings from the new client, and my first thought was that we broke it.",
+      "weakness": "The same connection pool warnings appear in the logs on each of the seven days before the incident.",
+      "impact": 0.6
+    },
+    {
+      "id": "E5",
+      "title": "Release notes for checkout-svc v412",
+      "kind": "document",
+      "source": "Sam Whitley, checkout tech lead",
+      "reliability": 0.75,
+      "favors": "defense",
+      "summary": "The 08:55 release upgraded the HTTP client library from 4.2 to 5.0, and the upgrade changed default TLS behavior.",
+      "quote": "Upgrade http-client from 4.2 to 5.0, which changes TLS defaults and certificate chain caching.",
+      "weakness": "The changed TLS default governs fallback to TLS 1.0, which the vendor endpoint has never used.",
+      "rebuttal": "The same upgrade also changed how intermediate certificates are cached, so it can still matter during a rotation.",
+      "impact": 0.5
+    },
+    {
+      "id": "E6",
+      "title": "Agreed incident timeline",
+      "kind": "document",
+      "source": "Postmortem working group",
+      "reliability": 0.95,
+      "favors": "neutral",
+      "summary": "Both changes landed within five minutes of each other; errors began at 09:02 and ended at 09:47.",
+      "quote": "Checkout errors began at 09:02 and ended at 09:47."
+    }
+  ],
+  "participants": [
+    {
+      "id": "judge",
+      "role": "judge",
+      "name": "Judge Okafor"
+    },
+    {
+      "id": "clerk",
+      "role": "clerk",
+      "name": "Clerk"
+    },
+    {
+      "id": "prosecution",
+      "role": "prosecution",
+      "name": "Prosecution"
+    },
+    {
+      "id": "defense",
+      "role": "defense",
+      "name": "Defense"
+    },
+    {
+      "id": "witness-E1",
+      "role": "witness",
+      "name": "Priya Shah, SRE on call"
+    },
+    {
+      "id": "witness-E2",
+      "role": "witness",
+      "name": "Ellen Ford, vendor change manager"
+    },
+    {
+      "id": "witness-E3",
+      "role": "witness",
+      "name": "Marco Reyes, incident commander"
+    },
+    {
+      "id": "witness-E4",
+      "role": "witness",
+      "name": "Jordan Kim, checkout on-call engineer"
+    },
+    {
+      "id": "witness-E5",
+      "role": "witness",
+      "name": "Sam Whitley, checkout tech lead"
+    },
+    {
+      "id": "juror-1",
+      "role": "juror",
+      "name": "Juror 1 (Dana)",
+      "temperament": "engineer"
+    },
+    {
+      "id": "juror-2",
+      "role": "juror",
+      "name": "Juror 2 (Morgan)",
+      "temperament": "skeptic"
+    },
+    {
+      "id": "juror-3",
+      "role": "juror",
+      "name": "Juror 3 (Rosa)",
+      "temperament": "empath"
+    },
+    {
+      "id": "juror-4",
+      "role": "juror",
+      "name": "Juror 4 (Theo)",
+      "temperament": "stickler"
+    },
+    {
+      "id": "juror-5",
+      "role": "juror",
+      "name": "Juror 5 (Imani)",
+      "temperament": "pragmatist"
+    },
+    {
+      "id": "juror-6",
+      "role": "juror",
+      "name": "Juror 6 (Walt)",
+      "temperament": "contrarian"
+    },
+    {
+      "id": "juror-7",
+      "role": "juror",
+      "name": "Juror 7 (Keiko)",
+      "temperament": "auditor"
+    }
+  ],
+  "turns": [
+    {
+      "seq": 1,
+      "phase": "opening",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "All rise. The court will hear the matter of The March 14 Checkout Outage.",
+      "citations": []
+    },
+    {
+      "seq": 2,
+      "phase": "opening",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "remark",
+      "text": "Court is in session. The question for this jury is a single claim: The March 14 checkout outage was caused by the payment vendor's certificate rotation, not by our 08:55 deploy. The prosecution carries the burden and must prove it by a preponderance of the evidence (more likely true than not). Counsel, every statement you make must cite an exhibit by its id. I will rule on objections as they come, and anything I strike is gone from the record.",
+      "citations": []
+    },
+    {
+      "seq": 3,
+      "phase": "opening",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Good morning. You are here to decide one thing. The March 14 checkout outage was caused by the payment vendor's certificate rotation, not by our 08:55 deploy. The vendor rotated its TLS certificates at 09:00, our clients could not validate the new chain, and checkout failed. Rolling back our deploy changed nothing; pinning the new intermediate certificate fixed it. You will see Exhibit E1 (Load balancer TLS error log) [E1]. TLS handshake failures against the vendor endpoint started at 09:02:11, two minutes after the vendor rotation and seven minutes after our deploy. You will also see Exhibit E3 (Rollback and recovery measurements) [E3]. Rolling back our 08:55 deploy at 09:20 did not change the error rate. Errors stopped at 09:47, within a minute of adding the vendor's new intermediate certificate to our trust bundle. Our burden is a preponderance of the evidence (more likely true than not). The record meets it.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 4,
+      "phase": "opening",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The prosecution has told you what it hopes the evidence shows. They must prove it more likely than not. Our 08:55 deploy upgraded the HTTP client and changed how it handles TLS. The timing is too close to rule it out, and the vendor's own notice was written after the fact. Consider Exhibit E5 (Release notes for checkout-svc v412) [E5]. The 08:55 release upgraded the HTTP client library from 4.2 to 5.0, and the upgrade changed default TLS behavior. And keep in mind what their own exhibit cannot tell you: the excerpt covers only the us-east region, one of three regions that serve checkout [E1].",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 5,
+      "phase": "evidence",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "The parties stipulate to the following joint exhibits: Exhibit E6 (Agreed incident timeline) [E6].",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 6,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution offers Exhibit E1 (Load balancer TLS error log), from Priya Shah, SRE on call. TLS handshake failures against the vendor endpoint started at 09:02:11, two minutes after the vendor rotation and seven minutes after our deploy. In its own words: \"Every failed request in the window ends with the same error: unable to get local issuer certificate.\" [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "quote": "Every failed request in the window ends with the same error: unable to get local issuer certificate.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 7,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution calls attention to Exhibit E2 (Vendor change notice CN-5531). The key line reads \"Rotation of TLS certificates for api.payments-vendor.example began at 09:00 UTC and introduced a new intermediate CA.\" [E2]. The vendor rotated the certificates for its API endpoints starting at 09:00 UTC and moved to a new intermediate certificate authority.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "quote": "Rotation of TLS certificates for api.payments-vendor.example began at 09:00 UTC and introduced a new intermediate CA.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 8,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution offers Exhibit E3 (Rollback and recovery measurements), from Marco Reyes, incident commander. Rolling back our 08:55 deploy at 09:20 did not change the error rate. Errors stopped at 09:47, within a minute of adding the vendor's new intermediate certificate to our trust bundle. In its own words: \"the  error rate on rolled-back pods was 96.8 percent, against 97.1 percent on pods still running v412.\" [E3].",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "quote": "the  error rate on rolled-back pods was 96.8 percent, against 97.1 percent on pods still running v412.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 9,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "objection",
+      "text": "Objection. Exhibit E3 does not read \"the  error rate on rolled-back pods was 96.8 percent, against 97.1 percent on pods still running v412.\"",
+      "citations": [],
+      "refersTo": 8,
+      "objection": {
+        "by": "defense",
+        "grounds": "misquote",
+        "detail": "Exhibit E3 does not read \"the  error rate on rolled-back pods was 96.8 percent, against 97.1 percent on pods still running v412.\""
+      }
+    },
+    {
+      "seq": 10,
+      "phase": "evidence",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Overruled. The quoted words are in the exhibit. The difference is formatting, not substance.",
+      "citations": [],
+      "refersTo": 8,
+      "ruling": {
+        "outcome": "overruled",
+        "reason": "The quoted words are in the exhibit. The difference is formatting, not substance."
+      }
+    },
+    {
+      "seq": 11,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense offers Exhibit E4 (Statement of the checkout on-call engineer), from Jordan Kim, checkout on-call engineer. The on-call engineer saw connection pool warnings from the new HTTP client right after the 08:55 deploy and suspected the deploy first. In its own words: \"Right after the deploy finished I saw connection pool warnings from the new client, and my first thought was that we broke it.\" [E4].",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "quote": "Right after the deploy finished I saw connection pool warnings from the new client, and my first thought was that we broke it.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 12,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "Next, Exhibit E5 (Release notes for checkout-svc v412), provided by Sam Whitley, checkout tech lead. The 08:55 release upgraded the HTTP client library from 4.2 to 5.0, and the upgrade changed default TLS behavior. The record is direct on this point: \"Upgrade http-client from 4.2 to 5.0, which changes TLS defaults and certificate chain caching.\" [E5].",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "quote": "Upgrade http-client from 4.2 to 5.0, which changes TLS defaults and certificate chain caching.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 13,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "Your exhibit says \"Every failed request in the window ends with the same error: unable to get local issuer certificate.\" [E1]. But isn't it true that the excerpt covers only the us-east region, one of three regions that serve checkout?",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "quote": "Every failed request in the window ends with the same error: unable to get local issuer certificate.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 14,
+      "phase": "cross",
+      "speakerId": "witness-E1",
+      "role": "witness",
+      "kind": "answer",
+      "text": "I'll grant that. The excerpt covers only the us-east region, one of three regions that serve checkout [E1]. But the us-west and eu-central logs show the same error starting within the same minute; they were left out of the excerpt for length, not because they differ [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ],
+      "refersTo": 13,
+      "impeachment": {
+        "evidenceId": "E1",
+        "factor": 0.8,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 15,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "You stand behind Exhibit E3 (Rollback and recovery measurements) [E3], correct? But isn't it true that the rollback was partial; two of twelve pods kept the new build for eleven extra minutes?",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 16,
+      "phase": "cross",
+      "speakerId": "witness-E3",
+      "role": "witness",
+      "kind": "answer",
+      "text": "That's fair. The rollback was partial; two of twelve pods kept the new build for eleven extra minutes [E3]. But the ten pods that did roll back failed at the same rate as the two that did not, which is the comparison that matters [E3].",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ],
+      "refersTo": 15,
+      "impeachment": {
+        "evidenceId": "E3",
+        "factor": 0.825,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 17,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "You were under a lot of pressure to produce this, weren't you?",
+      "citations": [],
+      "struck": true
+    },
+    {
+      "seq": 18,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "objection",
+      "text": "Objection. Counsel's statement cites no evidence.",
+      "citations": [],
+      "refersTo": 17,
+      "objection": {
+        "by": "defense",
+        "grounds": "uncited",
+        "detail": "Counsel's statement cites no evidence."
+      }
+    },
+    {
+      "seq": 19,
+      "phase": "cross",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Sustained. Counsel pointed to nothing in the record. The statement is struck and the jury will disregard it.",
+      "citations": [],
+      "refersTo": 17,
+      "ruling": {
+        "outcome": "sustained",
+        "reason": "Counsel pointed to nothing in the record. The statement is struck and the jury will disregard it."
+      }
+    },
+    {
+      "seq": 20,
+      "phase": "cross",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "remark",
+      "text": "The witness need not answer. Counsel, move on.",
+      "citations": [],
+      "refersTo": 17
+    },
+    {
+      "seq": 21,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "Let's look at Exhibit E4 (Statement of the checkout on-call engineer) [E4]. But isn't it true that the same connection pool warnings appear in the logs on each of the seven days before the incident?",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 22,
+      "phase": "cross",
+      "speakerId": "witness-E4",
+      "role": "witness",
+      "kind": "answer",
+      "text": "That's fair. The same connection pool warnings appear in the logs on each of the seven days before the incident [E4]. I can only speak to what the exhibit covers.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ],
+      "refersTo": 21,
+      "impeachment": {
+        "evidenceId": "E4",
+        "factor": 0.4,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 23,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Let's take stock of what you've seen. Exhibit E2 (Vendor change notice CN-5531) [E2], Exhibit E1 (Load balancer TLS error log) [E1] and Exhibit E3 (Rollback and recovery measurements) [E3] all point the same way. The defense pressed Priya Shah, SRE on call, on a limitation, and the answer held up: the us-west and eu-central logs show the same error starting within the same minute; they were left out of the excerpt for length, not because they differ [E1]. The standard is more likely than not. On this record, it is met.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 24,
+      "phase": "closing",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "Let me tell you what the prosecution didn't prove. Under cross-examination, Priya Shah, SRE on call, admitted that the excerpt covers only the us-east region, one of three regions that serve checkout [E1]. Under cross-examination, Marco Reyes, incident commander, admitted that the rollback was partial; two of twelve pods kept the new build for eleven extra minutes [E3]. Then there is Exhibit E5 (Release notes for checkout-svc v412) [E5]. The 08:55 release upgraded the HTTP client library from 4.2 to 5.0, and the upgrade changed default TLS behavior. The court also struck part of the prosecution's case for reaching past the record. Ask yourselves why they needed to [E5]. That is not more likely than not. The claim has not been proven.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E3",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 25,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Briefly, in rebuttal. The defense wants you to focus on Exhibit E5 (Release notes for checkout-svc v412) [E5]. But the record also says \"Rotation of TLS certificates for api.payments-vendor.example began at 09:00 UTC and introduced a new intermediate CA.\" [E2]. Weigh the whole record, not one exhibit in isolation.",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "quote": "Rotation of TLS certificates for api.payments-vendor.example began at 09:00 UTC and introduced a new intermediate CA.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 26,
+      "phase": "deliberation",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "instruction",
+      "text": "Members of the jury, you may weigh only exhibits that were properly cited and statements that were not struck. One statement was struck. You will not consider it. The standard is a preponderance of the evidence (more likely true than not). You will vote twice: first on your own, then again after hearing each other. A verdict requires at least two thirds of the jury. With 7 of you, that means 5 must agree, one way or the other.",
+      "citations": []
+    },
+    {
+      "seq": 27,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The measurements carry this one. Exhibit E1 (Load balancer TLS error log) [E1] weighs most for me, even after what came out on cross. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 71% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 28,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I came in doubtful, and the record still got me over the line. Exhibit E1 (Load balancer TLS error log) [E1] weighs most for me, even after what came out on cross. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 67% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 29,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The people closest to this told a story that holds together. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 62% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 30,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The record supports the claim, and it was argued properly. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 61% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 31,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Plainly, this is the most likely explanation. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 65% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 32,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I tried to argue myself out of it and couldn't. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 63% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 33,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The paper trail lines up. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 64% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 34,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E1 (Load balancer TLS error log) [E1] still carries the most weight for me. I put the claim at about 70% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 35,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E1 (Load balancer TLS error log) [E1] still carries the most weight for me. I put the claim at about 67% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 36,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 63% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 37,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 62% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 38,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 65% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 39,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 63% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 40,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 64% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 41,
+      "phase": "verdict",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "verdict",
+      "text": "The jury has reached a verdict. By a vote of 7 to 0, the claim is UPHELD: The March 14 checkout outage was caused by the payment vendor's certificate rotation, not by our 08:55 deploy. The court records a verdict confidence of 0.72. I thank the jury for its service.",
+      "citations": []
+    },
+    {
+      "seq": 42,
+      "phase": "verdict",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "Claim upheld, 7 to 0. The rule required at least two thirds of the jury. Verdict confidence 0.72. Court is adjourned.",
+      "citations": []
+    }
+  ],
+  "deliberation": [
+    {
+      "round": 1,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "uphold",
+          "confidence": 0.85,
+          "belief": 0.707,
+          "reasoning": "The measurements carry this one. Exhibit E1 (Load balancer TLS error log) [E1] weighs most for me, even after what came out on cross. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 71% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "uphold",
+          "confidence": 0.65,
+          "belief": 0.67,
+          "reasoning": "I came in doubtful, and the record still got me over the line. Exhibit E1 (Load balancer TLS error log) [E1] weighs most for me, even after what came out on cross. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 67% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "uphold",
+          "confidence": 0.74,
+          "belief": 0.623,
+          "reasoning": "The people closest to this told a story that holds together. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 62% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "uphold",
+          "confidence": 0.64,
+          "belief": 0.612,
+          "reasoning": "The record supports the claim, and it was argued properly. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 61% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "uphold",
+          "confidence": 0.8,
+          "belief": 0.649,
+          "reasoning": "Plainly, this is the most likely explanation. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 65% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "uphold",
+          "confidence": 0.68,
+          "belief": 0.631,
+          "reasoning": "I tried to argue myself out of it and couldn't. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I put the claim at about 63% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "uphold",
+          "confidence": 0.71,
+          "belief": 0.644,
+          "reasoning": "The paper trail lines up. Exhibit E2 (Vendor change notice CN-5531) [E2] weighs most for me. Exhibit E5 (Release notes for checkout-svc v412) [E5] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 64% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E5",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "uphold",
+          "confidence": 0.83,
+          "belief": 0.698,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E1 (Load balancer TLS error log) [E1] still carries the most weight for me. I put the claim at about 70% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "uphold",
+          "confidence": 0.65,
+          "belief": 0.669,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E1 (Load balancer TLS error log) [E1] still carries the most weight for me. I put the claim at about 67% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "uphold",
+          "confidence": 0.75,
+          "belief": 0.632,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 63% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "uphold",
+          "confidence": 0.64,
+          "belief": 0.616,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 62% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "uphold",
+          "confidence": 0.8,
+          "belief": 0.649,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 65% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "uphold",
+          "confidence": 0.68,
+          "belief": 0.629,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 63% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "uphold",
+          "confidence": 0.71,
+          "belief": 0.644,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E2 (Vendor change notice CN-5531) [E2] still carries the most weight for me. I put the claim at about 64% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "outcome": "upheld",
+    "rule": "supermajority",
+    "tally": {
+      "uphold": 7,
+      "reject": 0
+    },
+    "confidence": 0.72,
+    "summary": "Claim upheld, 7 to 0. The rule required at least two thirds of the jury. Verdict confidence 0.72."
+  },
+  "stats": {
+    "turns": 42,
+    "citations": 45,
+    "invalidCitations": 0,
+    "objections": 2,
+    "sustained": 1,
+    "overruled": 1,
+    "struckTurns": 1,
+    "impeachments": 3
+  }
+}

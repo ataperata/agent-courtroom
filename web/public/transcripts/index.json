@@ -1,0 +1,23 @@
+[
+  {
+    "file": "checkout-outage.json",
+    "id": "checkout-outage",
+    "title": "The March 14 Checkout Outage",
+    "claim": "The March 14 checkout outage was caused by the payment vendor's certificate rotation, not by our 08:55 deploy.",
+    "outcome": "upheld"
+  },
+  {
+    "file": "fastener-lot-2417.json",
+    "id": "fastener-lot-2417",
+    "title": "Receiving Inspection of Lot 2417",
+    "claim": "Lot 2417 of M8 class 10.9 flange bolts is nonconforming and should be rejected and returned to the supplier.",
+    "outcome": "hung"
+  },
+  {
+    "file": "four-day-week.json",
+    "id": "four-day-week",
+    "title": "The Four-Day Week Pilot",
+    "claim": "The four-day work week pilot increased the support team's throughput.",
+    "outcome": "rejected"
+  }
+]

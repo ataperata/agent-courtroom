@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": "1.0",
+  "id": "fastener-lot-2417--seed-1",
+  "mode": "demo",
+  "engine": "scripted",
+  "seed": "1",
+  "generatedAt": "2026-01-01T09:00:00.000Z",
+  "case": {
+    "id": "fastener-lot-2417",
+    "title": "Receiving Inspection of Lot 2417",
+    "claim": "Lot 2417 of M8 class 10.9 flange bolts is nonconforming and should be rejected and returned to the supplier.",
+    "background": "Lot 2417 is 12 boxes of M8 x 1.25 flange bolts, property class 10.9, for the wheel hub assembly line. Receiving inspection flagged the lot on September 3. Production needs a disposition within the week: accept, sort, or reject and return.\n\nA reject sends the full lot back and pauses the hub line for about four days while a replacement ships. Accepting a nonconforming lot puts under-strength fasteners into a safety-relevant joint. The material review board decides on the preponderance of the evidence, and the supplier has already disputed the receiving results.",
+    "burden": "preponderance"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "title": "Receiving inspection hardness results",
+      "kind": "inspection",
+      "source": "Elena Duarte, receiving inspector",
+      "reliability": 0.82,
+      "favors": "prosecution",
+      "summary": "Four of 32 sampled bolts measured below the 33 HRC minimum, and all four came from box 9.",
+      "quote": "Four of 32 samples measured below the 33 HRC minimum, with the lowest at 30.5 HRC.",
+      "weakness": "The hardness tester was two days past its calibration due date when the test was run.",
+      "rebuttal": "A check against the certified reference block that morning read within 0.3 HRC of its stated value.",
+      "impact": 0.3
+    },
+    {
+      "id": "E2",
+      "title": "Proof load test",
+      "kind": "data",
+      "source": "Ravi Patel, plant 2 materials lab",
+      "reliability": 0.86,
+      "favors": "prosecution",
+      "summary": "Three of eight bolts pulled from box 9 yielded below the class 10.9 proof load of 30.2 kN.",
+      "quote": "Three of the eight bolts tested yielded before reaching the 30.2 kN proof load.",
+      "weakness": "All three failures came from a single box out of twelve.",
+      "impact": 0.3
+    },
+    {
+      "id": "E3",
+      "title": "Supplier certificate of conformance",
+      "kind": "document",
+      "source": "Hannah Cole, supplier quality manager",
+      "reliability": 0.7,
+      "favors": "defense",
+      "summary": "The supplier certified the lot as class 10.9 with heat treat records for heat lot H-88, all within specification.",
+      "quote": "We certify that lot 2417, heat lot H-88, conforms to property class 10.9 in all respects.",
+      "weakness": "Box labels show two heat lots in the shipment, H-88 and H-91, but the certificate covers only H-88.",
+      "rebuttal": "H-91 went through the same furnace with the same recipe the same week.",
+      "impact": 0.6
+    },
+    {
+      "id": "E4",
+      "title": "Statement of the supplier quality engineer",
+      "kind": "testimony",
+      "source": "Tom Becker, supplier quality engineer",
+      "reliability": 0.55,
+      "favors": "defense",
+      "summary": "The supplier's final inspection passed every sampled part, and the supplier has shipped this part number for three years without a rejection.",
+      "quote": "Our final inspection passed every sampled part, and we have shipped this part number for three years without a single rejection.",
+      "weakness": "The supplier sampled 8 parts, well under the 32 that the drawing's sampling plan requires.",
+      "impact": 0.5
+    },
+    {
+      "id": "E5",
+      "title": "Drawing requirements, part 44-0871",
+      "kind": "document",
+      "source": "Engineering drawing rev F",
+      "reliability": 0.98,
+      "favors": "neutral",
+      "summary": "The drawing requires class 10.9, core hardness 33 to 39 HRC, and acceptance sampling per ISO 3269.",
+      "quote": "Core hardness 33 to 39 HRC. Acceptance sampling per ISO 3269."
+    },
+    {
+      "id": "E6",
+      "title": "Independent lab retest",
+      "kind": "inspection",
+      "source": "Dr. Ana Lindqvist, Northgate Testing Labs",
+      "reliability": 0.8,
+      "favors": "defense",
+      "summary": "An accredited outside lab retested 20 bolts and found every one within specification for hardness and proof load.",
+      "quote": "All 20 specimens met the hardness and proof load requirements of ISO 898-1 for property class 10.9.",
+      "weakness": "The lab retested bolts from boxes 1 through 6 only, and none from box 9 where every failure came from.",
+      "impact": 0.65
+    }
+  ],
+  "participants": [
+    {
+      "id": "judge",
+      "role": "judge",
+      "name": "Judge Okafor"
+    },
+    {
+      "id": "clerk",
+      "role": "clerk",
+      "name": "Clerk"
+    },
+    {
+      "id": "prosecution",
+      "role": "prosecution",
+      "name": "Prosecution"
+    },
+    {
+      "id": "defense",
+      "role": "defense",
+      "name": "Defense"
+    },
+    {
+      "id": "witness-E1",
+      "role": "witness",
+      "name": "Elena Duarte, receiving inspector"
+    },
+    {
+      "id": "witness-E2",
+      "role": "witness",
+      "name": "Ravi Patel, plant 2 materials lab"
+    },
+    {
+      "id": "witness-E3",
+      "role": "witness",
+      "name": "Hannah Cole, supplier quality manager"
+    },
+    {
+      "id": "witness-E4",
+      "role": "witness",
+      "name": "Tom Becker, supplier quality engineer"
+    },
+    {
+      "id": "witness-E6",
+      "role": "witness",
+      "name": "Dr. Ana Lindqvist, Northgate Testing Labs"
+    },
+    {
+      "id": "juror-1",
+      "role": "juror",
+      "name": "Juror 1 (Dana)",
+      "temperament": "engineer"
+    },
+    {
+      "id": "juror-2",
+      "role": "juror",
+      "name": "Juror 2 (Morgan)",
+      "temperament": "skeptic"
+    },
+    {
+      "id": "juror-3",
+      "role": "juror",
+      "name": "Juror 3 (Rosa)",
+      "temperament": "empath"
+    },
+    {
+      "id": "juror-4",
+      "role": "juror",
+      "name": "Juror 4 (Theo)",
+      "temperament": "stickler"
+    },
+    {
+      "id": "juror-5",
+      "role": "juror",
+      "name": "Juror 5 (Imani)",
+      "temperament": "pragmatist"
+    },
+    {
+      "id": "juror-6",
+      "role": "juror",
+      "name": "Juror 6 (Walt)",
+      "temperament": "contrarian"
+    },
+    {
+      "id": "juror-7",
+      "role": "juror",
+      "name": "Juror 7 (Keiko)",
+      "temperament": "auditor"
+    }
+  ],
+  "turns": [
+    {
+      "seq": 1,
+      "phase": "opening",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "All rise. The court will hear the matter of Receiving Inspection of Lot 2417.",
+      "citations": []
+    },
+    {
+      "seq": 2,
+      "phase": "opening",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "remark",
+      "text": "Court is in session. The question for this jury is a single claim: Lot 2417 of M8 class 10.9 flange bolts is nonconforming and should be rejected and returned to the supplier. The prosecution carries the burden and must prove it by a preponderance of the evidence (more likely true than not). Counsel, every statement you make must cite an exhibit by its id. I will rule on objections as they come, and anything I strike is gone from the record.",
+      "citations": []
+    },
+    {
+      "seq": 3,
+      "phase": "opening",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Good morning. You are here to decide one thing. Lot 2417 of M8 class 10.9 flange bolts is nonconforming and should be rejected and returned to the supplier. Receiving inspection found soft parts and proof load failures, both against the drawing. The supplier's paperwork covers a different heat lot than the one in the boxes. You will see Exhibit E2 (Proof load test) [E2]. Three of eight bolts pulled from box 9 yielded below the class 10.9 proof load of 30.2 kN. You will also see Exhibit E1 (Receiving inspection hardness results) [E1]. Four of 32 sampled bolts measured below the 33 HRC minimum, and all four came from box 9. Our burden is a preponderance of the evidence (more likely true than not). The record meets it.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 4,
+      "phase": "opening",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The prosecution has told you what it hopes the evidence shows. They must prove it more likely than not. An independent lab retested the lot and every part passed. The failures cluster in one box and came off a hardness tester that was past its calibration date. Consider Exhibit E6 (Independent lab retest) [E6]. An accredited outside lab retested 20 bolts and found every one within specification for hardness and proof load. And keep in mind what their own exhibit cannot tell you: all three failures came from a single box out of twelve [E2].",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 5,
+      "phase": "evidence",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "The parties stipulate to the following joint exhibits: Exhibit E5 (Drawing requirements, part 44-0871) [E5].",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 6,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Next, Exhibit E1 (Receiving inspection hardness results), provided by Elena Duarte, receiving inspector. Four of 32 sampled bolts measured below the 33 HRC minimum, and all four came from box 9. The record is direct on this point: \"Four of 32 samples measured below the 33 HRC minimum, with the lowest at 30.5 HRC.\" [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "quote": "Four of 32 samples measured below the 33 HRC minimum, with the lowest at 30.5 HRC.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 7,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution calls attention to Exhibit E2 (Proof load test). The key line reads \"Three of the eight bolts tested yielded before reaching the 30.2 kN proof load.\" [E2]. Three of eight bolts pulled from box 9 yielded below the class 10.9 proof load of 30.2 kN.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "quote": "Three of the eight bolts tested yielded before reaching the 30.2 kN proof load.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 8,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense offers Exhibit E3 (Supplier certificate of conformance), from Hannah Cole, supplier quality manager. The supplier certified the lot as class 10.9 with heat treat records for heat lot H-88, all within specification. In its own words: \"We certify that lot 2417, heat lot H-88, conforms to property class 10.9 in all respects.\" [E3].",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "quote": "We certify that lot 2417, heat lot H-88, conforms to property class 10.9 in all respects.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 9,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "Next, Exhibit E4 (Statement of the supplier quality engineer), provided by Tom Becker, supplier quality engineer. The supplier's final inspection passed every sampled part, and the supplier has shipped this part number for three years without a rejection. The record is direct on this point: \"our  final inspection passed every sampled part, and we have shipped this part number for three years without a single rejection.\" [E4].",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "quote": "our  final inspection passed every sampled part, and we have shipped this part number for three years without a single rejection.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 10,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "objection",
+      "text": "Objection. Exhibit E4 does not read \"our  final inspection passed every sampled part, and we have shipped this part number for three years without a single rejection.\"",
+      "citations": [],
+      "refersTo": 9,
+      "objection": {
+        "by": "prosecution",
+        "grounds": "misquote",
+        "detail": "Exhibit E4 does not read \"our  final inspection passed every sampled part, and we have shipped this part number for three years without a single rejection.\""
+      }
+    },
+    {
+      "seq": 11,
+      "phase": "evidence",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Overruled. The quoted words are in the exhibit. The difference is formatting, not substance.",
+      "citations": [],
+      "refersTo": 9,
+      "ruling": {
+        "outcome": "overruled",
+        "reason": "The quoted words are in the exhibit. The difference is formatting, not substance."
+      }
+    },
+    {
+      "seq": 12,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense calls attention to Exhibit E6 (Independent lab retest). The key line reads \"All 20 specimens met the hardness and proof load requirements of ISO 898-1 for property class 10.9.\" [E6]. An accredited outside lab retested 20 bolts and found every one within specification for hardness and proof load.",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "quote": "All 20 specimens met the hardness and proof load requirements of ISO 898-1 for property class 10.9.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 13,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "You stand behind Exhibit E2 (Proof load test) [E2], correct? But isn't it true that all three failures came from a single box out of twelve?",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 14,
+      "phase": "cross",
+      "speakerId": "witness-E2",
+      "role": "witness",
+      "kind": "answer",
+      "text": "Yes, that's true. All three failures came from a single box out of twelve [E2]. I can only speak to what the exhibit covers.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ],
+      "refersTo": 13,
+      "impeachment": {
+        "evidenceId": "E2",
+        "factor": 0.7,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 15,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "Let's look at Exhibit E1 (Receiving inspection hardness results) [E1]. But isn't it true that the hardness tester was two days past its calibration due date when the test was run?",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 16,
+      "phase": "cross",
+      "speakerId": "witness-E1",
+      "role": "witness",
+      "kind": "answer",
+      "text": "Yes, that's true. The hardness tester was two days past its calibration due date when the test was run [E1]. But a check against the certified reference block that morning read within 0.3 HRC of its stated value [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ],
+      "refersTo": 15,
+      "impeachment": {
+        "evidenceId": "E1",
+        "factor": 0.85,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 17,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "Let's look at Exhibit E6 (Independent lab retest) [E6]. But isn't it true that the lab retested bolts from boxes 1 through 6 only, and none from box 9 where every failure came from?",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 18,
+      "phase": "cross",
+      "speakerId": "witness-E6",
+      "role": "witness",
+      "kind": "answer",
+      "text": "I'll grant that. The lab retested bolts from boxes 1 through 6 only, and none from box 9 where every failure came from [E6]. I can only speak to what the exhibit covers.",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ],
+      "refersTo": 17,
+      "impeachment": {
+        "evidenceId": "E6",
+        "factor": 0.35,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 19,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "You stand behind Exhibit E3 (Supplier certificate of conformance) [E3], correct? But isn't it true that box labels show two heat lots in the shipment, H-88 and H-91, but the certificate covers only H-88?",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 20,
+      "phase": "cross",
+      "speakerId": "witness-E3",
+      "role": "witness",
+      "kind": "answer",
+      "text": "Yes, that's true. Box labels show two heat lots in the shipment, H-88 and H-91, but the certificate covers only H-88 [E3]. But H-91 went through the same furnace with the same recipe the same week [E3].",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ],
+      "refersTo": 19,
+      "impeachment": {
+        "evidenceId": "E3",
+        "factor": 0.7,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 21,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Step back and look at the whole record. Exhibit E1 (Receiving inspection hardness results) [E1] and Exhibit E2 (Proof load test) [E2] both point the same way. The defense pressed Elena Duarte, receiving inspector, on a limitation, and the answer held up: a check against the certified reference block that morning read within 0.3 HRC of its stated value [E1]. The standard is more likely than not. On this record, it is met.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 22,
+      "phase": "closing",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The burden never moved. It sits with the prosecution. Under cross-examination, Elena Duarte, receiving inspector, admitted that the hardness tester was two days past its calibration due date when the test was run [E1]. Under cross-examination, Ravi Patel, plant 2 materials lab, admitted that all three failures came from a single box out of twelve [E2]. Then there is Exhibit E4 (Statement of the supplier quality engineer) [E4]. The supplier's final inspection passed every sampled part, and the supplier has shipped this part number for three years without a rejection. That is not more likely than not. The claim has not been proven.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 23,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Briefly, in rebuttal. The defense wants you to focus on Exhibit E4 (Statement of the supplier quality engineer) [E4]. But the record also says \"Four of 32 samples measured below the 33 HRC minimum, with the lowest at 30.5 HRC.\" [E1]. Weigh the whole record, not one exhibit in isolation.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "quote": "Four of 32 samples measured below the 33 HRC minimum, with the lowest at 30.5 HRC.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 24,
+      "phase": "deliberation",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "instruction",
+      "text": "Members of the jury, you may weigh only exhibits that were properly cited and statements that were not struck. Nothing was struck during this trial. The standard is a preponderance of the evidence (more likely true than not). You will vote twice: first on your own, then again after hearing each other. A verdict requires at least two thirds of the jury. With 7 of you, that means 5 must agree, one way or the other.",
+      "citations": []
+    },
+    {
+      "seq": 25,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The measurements carry this one. Exhibit E1 (Receiving inspection hardness results) [E1] weighs most for me, even after what came out on cross. Exhibit E3 (Supplier certificate of conformance) [E3] cuts the other way, but not far enough. I put the claim at about 59% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 26,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "This doesn't clear the bar, and the bar matters. Not by much, though. Exhibit E3 (Supplier certificate of conformance) [E3] weighs most for me, even after what came out on cross. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 56% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 27,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I believe the witnesses, but what they told us doesn't add up to proof. I went back and forth on this. Exhibit E4 (Statement of the supplier quality engineer) [E4] weighs most for me. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 47% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 28,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Too much of this case leaned on things the record doesn't say. Not by much, though. Exhibit E3 (Supplier certificate of conformance) [E3] weighs most for me, even after what came out on cross. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 50% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 29,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Plainly, this is the most likely explanation. Not by much, though. Exhibit E1 (Receiving inspection hardness results) [E1] weighs most for me, even after what came out on cross. Exhibit E4 (Statement of the supplier quality engineer) [E4] cuts the other way, but not far enough. I put the claim at about 51% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 30,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Everyone seems sure. I'm not, and I don't think the record is either. Not by much, though. Exhibit E4 (Statement of the supplier quality engineer) [E4] weighs most for me. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 50% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 31,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The paper trail lines up. I'll admit it's close. Exhibit E2 (Proof load test) [E2] weighs most for me, even after what came out on cross. Exhibit E3 (Supplier certificate of conformance) [E3] cuts the other way, but not far enough. I put the claim at about 53% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 32,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E1 (Receiving inspection hardness results) [E1] still carries the most weight for me. I put the claim at about 58% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 33,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E3 (Supplier certificate of conformance) [E3] still carries the most weight for me. I put the claim at about 55% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 34,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Having heard the others, I'm changing my vote. Dana's point about Exhibit E1 (Receiving inspection hardness results) [E1] was the one I couldn't answer. I put the claim at about 49% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 35,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E3 (Supplier certificate of conformance) [E3] still carries the most weight for me. I put the claim at about 51% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 36,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E1 (Receiving inspection hardness results) [E1] still carries the most weight for me. I put the claim at about 51% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 37,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E4 (Statement of the supplier quality engineer) [E4] still carries the most weight for me. I put the claim at about 50% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 38,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E2 (Proof load test) [E2] still carries the most weight for me. I put the claim at about 53% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 39,
+      "phase": "verdict",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "verdict",
+      "text": "A verdict needed 5 votes one way or the other, and neither side reached it. The final vote stands at 4 to uphold and 3 to reject. I declare a hung jury. The claim is neither upheld nor rejected on this record.",
+      "citations": []
+    },
+    {
+      "seq": 40,
+      "phase": "verdict",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "Hung jury, 4 to 3. The rule required at least two thirds of the jury. Verdict confidence 0.04. Court is adjourned.",
+      "citations": []
+    }
+  ],
+  "deliberation": [
+    {
+      "round": 1,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "uphold",
+          "confidence": 0.65,
+          "belief": 0.589,
+          "reasoning": "The measurements carry this one. Exhibit E1 (Receiving inspection hardness results) [E1] weighs most for me, even after what came out on cross. Exhibit E3 (Supplier certificate of conformance) [E3] cuts the other way, but not far enough. I put the claim at about 59% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            },
+            {
+              "evidenceId": "E3",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.556,
+          "reasoning": "This doesn't clear the bar, and the bar matters. Not by much, though. Exhibit E3 (Supplier certificate of conformance) [E3] weighs most for me, even after what came out on cross. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 56% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E3",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "reject",
+          "confidence": 0.52,
+          "belief": 0.471,
+          "reasoning": "I believe the witnesses, but what they told us doesn't add up to proof. I went back and forth on this. Exhibit E4 (Statement of the supplier quality engineer) [E4] weighs most for me. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 47% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.503,
+          "reasoning": "Too much of this case leaned on things the record doesn't say. Not by much, though. Exhibit E3 (Supplier certificate of conformance) [E3] weighs most for me, even after what came out on cross. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 50% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E3",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "uphold",
+          "confidence": 0.57,
+          "belief": 0.51,
+          "reasoning": "Plainly, this is the most likely explanation. Not by much, though. Exhibit E1 (Receiving inspection hardness results) [E1] weighs most for me, even after what came out on cross. Exhibit E4 (Statement of the supplier quality engineer) [E4] cuts the other way, but not far enough. I put the claim at about 51% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            },
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.499,
+          "reasoning": "Everyone seems sure. I'm not, and I don't think the record is either. Not by much, though. Exhibit E4 (Statement of the supplier quality engineer) [E4] weighs most for me. Exhibit E1 (Receiving inspection hardness results) [E1] cuts the other way, but not far enough. I put the claim at about 50% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "uphold",
+          "confidence": 0.52,
+          "belief": 0.534,
+          "reasoning": "The paper trail lines up. I'll admit it's close. Exhibit E2 (Proof load test) [E2] weighs most for me, even after what came out on cross. Exhibit E3 (Supplier certificate of conformance) [E3] cuts the other way, but not far enough. I put the claim at about 53% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            },
+            {
+              "evidenceId": "E3",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "uphold",
+          "confidence": 0.63,
+          "belief": 0.579,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E1 (Receiving inspection hardness results) [E1] still carries the most weight for me. I put the claim at about 58% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.555,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E3 (Supplier certificate of conformance) [E3] still carries the most weight for me. I put the claim at about 55% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E3",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "uphold",
+          "confidence": 0.52,
+          "belief": 0.489,
+          "reasoning": "Having heard the others, I'm changing my vote. Dana's point about Exhibit E1 (Receiving inspection hardness results) [E1] was the one I couldn't answer. I put the claim at about 49% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.505,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E3 (Supplier certificate of conformance) [E3] still carries the most weight for me. I put the claim at about 51% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E3",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "uphold",
+          "confidence": 0.57,
+          "belief": 0.514,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E1 (Receiving inspection hardness results) [E1] still carries the most weight for me. I put the claim at about 51% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "reject",
+          "confidence": 0.54,
+          "belief": 0.496,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E4 (Statement of the supplier quality engineer) [E4] still carries the most weight for me. I put the claim at about 50% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "uphold",
+          "confidence": 0.52,
+          "belief": 0.533,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E2 (Proof load test) [E2] still carries the most weight for me. I put the claim at about 53% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "outcome": "hung",
+    "rule": "supermajority",
+    "tally": {
+      "uphold": 4,
+      "reject": 3
+    },
+    "confidence": 0.04,
+    "summary": "Hung jury, 4 to 3. The rule required at least two thirds of the jury. Verdict confidence 0.04."
+  },
+  "stats": {
+    "turns": 40,
+    "citations": 46,
+    "invalidCitations": 0,
+    "objections": 1,
+    "sustained": 0,
+    "overruled": 1,
+    "struckTurns": 0,
+    "impeachments": 4
+  }
+}

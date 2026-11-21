@@ -1,0 +1,1117 @@
+{
+  "schemaVersion": "1.0",
+  "id": "four-day-week--seed-1",
+  "mode": "demo",
+  "engine": "scripted",
+  "seed": "1",
+  "generatedAt": "2026-01-01T09:00:00.000Z",
+  "case": {
+    "id": "four-day-week",
+    "title": "The Four-Day Week Pilot",
+    "claim": "The four-day work week pilot increased the support team's throughput.",
+    "background": "From April through June the 14-person customer support team worked Monday to Thursday, ten hours a day. Leadership wants to know whether to make the schedule permanent. The pilot charter defined success as higher throughput with no loss in service quality.\n\nThe same quarter included the launch of the mobile app, which roughly doubled the number of new customers.",
+    "burden": "preponderance"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "title": "Tickets closed per week",
+      "kind": "data",
+      "source": "Sam Ortiz, support analytics lead",
+      "reliability": 0.8,
+      "favors": "prosecution",
+      "summary": "The team closed an average of 412 tickets a week during the pilot, up 9 percent from 378 in the quarter before.",
+      "quote": "Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.",
+      "weakness": "Ticket volume rose 14 percent that quarter because of the mobile app launch, faster than closures grew.",
+      "rebuttal": "The backlog stayed flat through the quarter, so the team kept pace with the extra volume rather than falling behind.",
+      "impact": 0.6
+    },
+    {
+      "id": "E2",
+      "title": "Statement of the support team lead",
+      "kind": "testimony",
+      "source": "Alicia Moreno, support team lead",
+      "reliability": 0.5,
+      "favors": "prosecution",
+      "summary": "The team lead says people come back on Monday rested and work through hard tickets faster.",
+      "quote": "People come back on Monday rested, and I see them take on the hard tickets instead of dodging them.",
+      "weakness": "The team lead proposed the pilot and has said publicly that she wants it made permanent.",
+      "impact": 0.4
+    },
+    {
+      "id": "E3",
+      "title": "First response time",
+      "kind": "data",
+      "source": "Sam Ortiz, support analytics lead",
+      "reliability": 0.85,
+      "favors": "defense",
+      "summary": "Median first response time rose from 2.1 hours to 3.4 hours during the pilot.",
+      "quote": "Median first response time went from 2.1 hours in Q1 to 3.4 hours in the pilot quarter.",
+      "weakness": "Most of the increase comes from tickets opened on Fridays, when no one was scheduled.",
+      "rebuttal": "Friday tickets were 22 percent of all volume, so a large share of customers waited over the weekend.",
+      "impact": 0.3
+    },
+    {
+      "id": "E4",
+      "title": "Pilot design review",
+      "kind": "document",
+      "source": "Grace Huang, people analytics",
+      "reliability": 0.9,
+      "favors": "defense",
+      "summary": "The pilot had no control group and changed the schedule during a launch quarter, so the effect of the schedule cannot be separated from the effect of the launch.",
+      "quote": "Without a control group, the effect of the schedule cannot be separated from the effect of the launch."
+    },
+    {
+      "id": "E5",
+      "title": "Ticket reopen rate",
+      "kind": "data",
+      "source": "Sam Ortiz, support analytics lead",
+      "reliability": 0.7,
+      "favors": "defense",
+      "summary": "The share of closed tickets that customers reopened rose from 6 percent to 8 percent.",
+      "quote": "The reopen rate rose from 6 percent in Q1 to 8 percent during the pilot.",
+      "weakness": "The reopen rate has moved by two points from one quarter to the next before, with no schedule change.",
+      "impact": 0.5
+    },
+    {
+      "id": "E6",
+      "title": "Customer satisfaction survey",
+      "kind": "data",
+      "source": "Lena Park, customer insights manager",
+      "reliability": 0.6,
+      "favors": "prosecution",
+      "summary": "Customer satisfaction held at 4.5 out of 5 during the pilot, the same as the quarter before.",
+      "quote": "Average satisfaction was 4.5 out of 5 in both Q1 and the pilot quarter.",
+      "weakness": "Only 7 percent of customers answered the survey.",
+      "impact": 0.5
+    },
+    {
+      "id": "E7",
+      "title": "Pilot charter",
+      "kind": "document",
+      "source": "VP of customer operations",
+      "reliability": 0.95,
+      "favors": "neutral",
+      "summary": "The charter defines success as higher throughput with no loss in service quality.",
+      "quote": "Success means higher throughput with no loss in service quality."
+    }
+  ],
+  "participants": [
+    {
+      "id": "judge",
+      "role": "judge",
+      "name": "Judge Okafor"
+    },
+    {
+      "id": "clerk",
+      "role": "clerk",
+      "name": "Clerk"
+    },
+    {
+      "id": "prosecution",
+      "role": "prosecution",
+      "name": "Prosecution"
+    },
+    {
+      "id": "defense",
+      "role": "defense",
+      "name": "Defense"
+    },
+    {
+      "id": "witness-E1",
+      "role": "witness",
+      "name": "Sam Ortiz, support analytics lead"
+    },
+    {
+      "id": "witness-E2",
+      "role": "witness",
+      "name": "Alicia Moreno, support team lead"
+    },
+    {
+      "id": "witness-E3",
+      "role": "witness",
+      "name": "Sam Ortiz, support analytics lead"
+    },
+    {
+      "id": "witness-E5",
+      "role": "witness",
+      "name": "Sam Ortiz, support analytics lead"
+    },
+    {
+      "id": "witness-E6",
+      "role": "witness",
+      "name": "Lena Park, customer insights manager"
+    },
+    {
+      "id": "juror-1",
+      "role": "juror",
+      "name": "Juror 1 (Dana)",
+      "temperament": "engineer"
+    },
+    {
+      "id": "juror-2",
+      "role": "juror",
+      "name": "Juror 2 (Morgan)",
+      "temperament": "skeptic"
+    },
+    {
+      "id": "juror-3",
+      "role": "juror",
+      "name": "Juror 3 (Rosa)",
+      "temperament": "empath"
+    },
+    {
+      "id": "juror-4",
+      "role": "juror",
+      "name": "Juror 4 (Theo)",
+      "temperament": "stickler"
+    },
+    {
+      "id": "juror-5",
+      "role": "juror",
+      "name": "Juror 5 (Imani)",
+      "temperament": "pragmatist"
+    },
+    {
+      "id": "juror-6",
+      "role": "juror",
+      "name": "Juror 6 (Walt)",
+      "temperament": "contrarian"
+    },
+    {
+      "id": "juror-7",
+      "role": "juror",
+      "name": "Juror 7 (Keiko)",
+      "temperament": "auditor"
+    }
+  ],
+  "turns": [
+    {
+      "seq": 1,
+      "phase": "opening",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "All rise. The court will hear the matter of The Four-Day Week Pilot.",
+      "citations": []
+    },
+    {
+      "seq": 2,
+      "phase": "opening",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "remark",
+      "text": "Court is in session. The question for this jury is a single claim: The four-day work week pilot increased the support team's throughput. The prosecution carries the burden and must prove it by a preponderance of the evidence (more likely true than not). Counsel, every statement you make must cite an exhibit by its id. I will rule on objections as they come, and anything I strike is gone from the record.",
+      "citations": []
+    },
+    {
+      "seq": 3,
+      "phase": "opening",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Members of the jury, this case comes down to one claim. The four-day work week pilot increased the support team's throughput. Tickets closed per week went up during the pilot, the team reports better focus, and customer satisfaction held steady. Fewer days did not mean less work done. You will see Exhibit E1 (Tickets closed per week) [E1]. The team closed an average of 412 tickets a week during the pilot, up 9 percent from 378 in the quarter before. You will also see Exhibit E6 (Customer satisfaction survey) [E6]. Customer satisfaction held at 4.5 out of 5 during the pilot, the same as the quarter before. Our burden is a preponderance of the evidence (more likely true than not). The record meets it.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 4,
+      "phase": "opening",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "You've heard a confident story. Confidence is not proof. They must prove it more likely than not. Ticket counts went up because a product launch drove more tickets, not because the team got faster. Response times got worse, reopen rates climbed, and the pilot had no control group. Consider Exhibit E4 (Pilot design review) [E4]. The pilot had no control group and changed the schedule during a launch quarter, so the effect of the schedule cannot be separated from the effect of the launch. And keep in mind what their own exhibit cannot tell you: ticket volume rose 14 percent that quarter because of the mobile app launch, faster than closures grew [E1].",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 5,
+      "phase": "evidence",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "The parties stipulate to the following joint exhibits: Exhibit E7 (Pilot charter) [E7].",
+      "citations": [
+        {
+          "evidenceId": "E7",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 6,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution offers Exhibit E1 (Tickets closed per week), from Sam Ortiz, support analytics lead. The team closed an average of 412 tickets a week during the pilot, up 9 percent from 378 in the quarter before. In its own words: \"Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.\" [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "quote": "Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 7,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "The prosecution offers Exhibit E2 (Statement of the support team lead), from Alicia Moreno, support team lead. The team lead says people come back on Monday rested and work through hard tickets faster. In its own words: \"people  come back on Monday rested, and I see them take on the hard tickets instead of dodging them.\" [E2].",
+      "citations": [
+        {
+          "evidenceId": "E2",
+          "quote": "people  come back on Monday rested, and I see them take on the hard tickets instead of dodging them.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 8,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "objection",
+      "text": "Objection. Exhibit E2 does not read \"people  come back on Monday rested, and I see them take on the hard tickets instead of dodging them.\"",
+      "citations": [],
+      "refersTo": 7,
+      "objection": {
+        "by": "defense",
+        "grounds": "misquote",
+        "detail": "Exhibit E2 does not read \"people  come back on Monday rested, and I see them take on the hard tickets instead of dodging them.\""
+      }
+    },
+    {
+      "seq": 9,
+      "phase": "evidence",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Overruled. The quoted words are in the exhibit. The difference is formatting, not substance.",
+      "citations": [],
+      "refersTo": 7,
+      "ruling": {
+        "outcome": "overruled",
+        "reason": "The quoted words are in the exhibit. The difference is formatting, not substance."
+      }
+    },
+    {
+      "seq": 10,
+      "phase": "evidence",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Next, Exhibit E6 (Customer satisfaction survey), provided by Lena Park, customer insights manager. Customer satisfaction held at 4.5 out of 5 during the pilot, the same as the quarter before. The record is direct on this point: \"Average satisfaction rose to 4.6 out of 5 in the pilot quarter.\" [E6].",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "quote": "Average satisfaction rose to 4.6 out of 5 in the pilot quarter.",
+          "valid": false,
+          "issue": "misquote"
+        }
+      ],
+      "struck": true
+    },
+    {
+      "seq": 11,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "objection",
+      "text": "Objection. Exhibit E6 does not read \"Average satisfaction rose to 4.6 out of 5 in the pilot quarter.\"",
+      "citations": [],
+      "refersTo": 10,
+      "objection": {
+        "by": "defense",
+        "grounds": "misquote",
+        "detail": "Exhibit E6 does not read \"Average satisfaction rose to 4.6 out of 5 in the pilot quarter.\""
+      }
+    },
+    {
+      "seq": 12,
+      "phase": "evidence",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Sustained. Exhibit E6 does not say \"Average satisfaction rose to 4.6 out of 5 in the pilot quarter.\" Counsel may not put words in the record. The statement is struck.",
+      "citations": [],
+      "refersTo": 10,
+      "ruling": {
+        "outcome": "sustained",
+        "reason": "Exhibit E6 does not say \"Average satisfaction rose to 4.6 out of 5 in the pilot quarter.\" Counsel may not put words in the record. The statement is struck."
+      }
+    },
+    {
+      "seq": 13,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense offers Exhibit E3 (First response time), from Sam Ortiz, support analytics lead. Median first response time rose from 2.1 hours to 3.4 hours during the pilot. In its own words: \"Median first response time went from 2.1 hours in Q1 to 3.4 hours in the pilot quarter.\" [E3].",
+      "citations": [
+        {
+          "evidenceId": "E3",
+          "quote": "Median first response time went from 2.1 hours in Q1 to 3.4 hours in the pilot quarter.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 14,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense calls attention to Exhibit E4 (Pilot design review). The key line reads \"Without a control group, the effect of the schedule cannot be separated from the effect of the launch.\" [E4]. The pilot had no control group and changed the schedule during a launch quarter, so the effect of the schedule cannot be separated from the effect of the launch.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "quote": "Without a control group, the effect of the schedule cannot be separated from the effect of the launch.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 15,
+      "phase": "evidence",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The defense calls attention to Exhibit E5 (Ticket reopen rate). The key line reads \"The reopen rate rose from 6 percent in Q1 to 8 percent during the pilot.\" [E5]. The share of closed tickets that customers reopened rose from 6 percent to 8 percent.",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "quote": "The reopen rate rose from 6 percent in Q1 to 8 percent during the pilot.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 16,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "Your exhibit says \"Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.\" [E1]. But isn't it true that ticket volume rose 14 percent that quarter because of the mobile app launch, faster than closures grew?",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "quote": "Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 17,
+      "phase": "cross",
+      "speakerId": "witness-E1",
+      "role": "witness",
+      "kind": "answer",
+      "text": "That's fair. Ticket volume rose 14 percent that quarter because of the mobile app launch, faster than closures grew [E1]. But the backlog stayed flat through the quarter, so the team kept pace with the extra volume rather than falling behind [E1].",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ],
+      "refersTo": 16,
+      "impeachment": {
+        "evidenceId": "E1",
+        "factor": 0.7,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 18,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "question",
+      "text": "You stand behind Exhibit E6 (Customer satisfaction survey) [E6], correct? But isn't it true that only 7 percent of customers answered the survey?",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 19,
+      "phase": "cross",
+      "speakerId": "witness-E6",
+      "role": "witness",
+      "kind": "answer",
+      "text": "I'll grant that. Only 7 percent of customers answered the survey [E6]. I can only speak to what the exhibit covers.",
+      "citations": [
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ],
+      "refersTo": 18,
+      "impeachment": {
+        "evidenceId": "E6",
+        "factor": 0.5,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 20,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "You were under a lot of pressure to produce this, weren't you?",
+      "citations": [],
+      "struck": true
+    },
+    {
+      "seq": 21,
+      "phase": "cross",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "objection",
+      "text": "Objection. Counsel's statement cites no evidence.",
+      "citations": [],
+      "refersTo": 20,
+      "objection": {
+        "by": "defense",
+        "grounds": "uncited",
+        "detail": "Counsel's statement cites no evidence."
+      }
+    },
+    {
+      "seq": 22,
+      "phase": "cross",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "ruling",
+      "text": "Sustained. Counsel pointed to nothing in the record. The statement is struck and the jury will disregard it.",
+      "citations": [],
+      "refersTo": 20,
+      "ruling": {
+        "outcome": "sustained",
+        "reason": "Counsel pointed to nothing in the record. The statement is struck and the jury will disregard it."
+      }
+    },
+    {
+      "seq": 23,
+      "phase": "cross",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "remark",
+      "text": "The witness need not answer. Counsel, move on.",
+      "citations": [],
+      "refersTo": 20
+    },
+    {
+      "seq": 24,
+      "phase": "cross",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "question",
+      "text": "Your exhibit says \"The reopen rate rose from 6 percent in Q1 to 8 percent during the pilot.\" [E5]. But isn't it true that the reopen rate has moved by two points from one quarter to the next before, with no schedule change?",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "quote": "The reopen rate rose from 6 percent in Q1 to 8 percent during the pilot.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 25,
+      "phase": "cross",
+      "speakerId": "witness-E5",
+      "role": "witness",
+      "kind": "answer",
+      "text": "I'll grant that. The reopen rate has moved by two points from one quarter to the next before, with no schedule change [E5]. I can only speak to what the exhibit covers.",
+      "citations": [
+        {
+          "evidenceId": "E5",
+          "valid": true
+        }
+      ],
+      "refersTo": 24,
+      "impeachment": {
+        "evidenceId": "E5",
+        "factor": 0.5,
+        "conceded": true
+      }
+    },
+    {
+      "seq": 26,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Here is where the record leaves us. Exhibit E1 (Tickets closed per week) [E1], Exhibit E2 (Statement of the support team lead) [E2] and Exhibit E6 (Customer satisfaction survey) [E6] all point the same way. The defense pressed Sam Ortiz, support analytics lead, on a limitation, and the answer held up: the backlog stayed flat through the quarter, so the team kept pace with the extra volume rather than falling behind [E1]. The standard is more likely than not. On this record, it is met.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "valid": true
+        },
+        {
+          "evidenceId": "E6",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 27,
+      "phase": "closing",
+      "speakerId": "defense",
+      "role": "defense",
+      "kind": "statement",
+      "text": "The prosecution had one job: meet the standard. Under cross-examination, Sam Ortiz, support analytics lead, admitted that ticket volume rose 14 percent that quarter because of the mobile app launch, faster than closures grew [E1]. Under cross-examination, Lena Park, customer insights manager, admitted that only 7 percent of customers answered the survey [E6]. Then there is Exhibit E4 (Pilot design review) [E4]. The pilot had no control group and changed the schedule during a launch quarter, so the effect of the schedule cannot be separated from the effect of the launch. The court also struck part of the prosecution's case for reaching past the record. Ask yourselves why they needed to [E4]. That is not more likely than not. The claim has not been proven.",
+      "citations": [
+        {
+          "evidenceId": "E1",
+          "valid": true
+        },
+        {
+          "evidenceId": "E6",
+          "valid": true
+        },
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 28,
+      "phase": "closing",
+      "speakerId": "prosecution",
+      "role": "prosecution",
+      "kind": "statement",
+      "text": "Briefly, in rebuttal. The defense wants you to focus on Exhibit E4 (Pilot design review) [E4]. But the record also says \"Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.\" [E1]. Weigh the whole record, not one exhibit in isolation.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "quote": "Average tickets closed per week rose from 378 in Q1 to 412 during the pilot, an increase of 9 percent.",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 29,
+      "phase": "deliberation",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "instruction",
+      "text": "Members of the jury, you may weigh only exhibits that were properly cited and statements that were not struck. 2 statements were struck. You will not consider them. The standard is a preponderance of the evidence (more likely true than not). You will vote twice: first on your own, then again after hearing each other. A verdict requires at least two thirds of the jury. With 7 of you, that means 5 must agree, one way or the other.",
+      "citations": []
+    },
+    {
+      "seq": 30,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The hard data doesn't close the gap. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 39% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 31,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "This doesn't clear the bar, and the bar matters. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 37% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 32,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I believe the witnesses, but what they told us doesn't add up to proof. I went back and forth on this. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E2 (Statement of the support team lead) [E2] cuts the other way, but not far enough. I put the claim at about 46% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E2",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 33,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Too much of this case leaned on things the record doesn't say. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 35% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 34,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "There's a reasonable version of events where the claim is wrong. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 42% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 35,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Everyone seems sure. I'm not, and I don't think the record is either. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 40% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 36,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "The documents don't line up well enough to sign off on. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 35% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        },
+        {
+          "evidenceId": "E1",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 37,
+      "phase": "deliberation",
+      "speakerId": "juror-1",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 39% likely, against a bar of 50%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 38,
+      "phase": "deliberation",
+      "speakerId": "juror-2",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 37% likely, against a bar of 58%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 39,
+      "phase": "deliberation",
+      "speakerId": "juror-3",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 44% likely, against a bar of 48%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 40,
+      "phase": "deliberation",
+      "speakerId": "juror-4",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 36% likely, against a bar of 53%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 41,
+      "phase": "deliberation",
+      "speakerId": "juror-5",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 41% likely, against a bar of 47%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 42,
+      "phase": "deliberation",
+      "speakerId": "juror-6",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 40% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 43,
+      "phase": "deliberation",
+      "speakerId": "juror-7",
+      "role": "juror",
+      "kind": "deliberation",
+      "text": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 35% likely, against a bar of 52%.",
+      "citations": [
+        {
+          "evidenceId": "E4",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "seq": 44,
+      "phase": "verdict",
+      "speakerId": "judge",
+      "role": "judge",
+      "kind": "verdict",
+      "text": "The jury has reached a verdict. By a vote of 0 to 7, the claim is REJECTED: The four-day work week pilot increased the support team's throughput. The court records a verdict confidence of 0.71. I thank the jury for its service.",
+      "citations": []
+    },
+    {
+      "seq": 45,
+      "phase": "verdict",
+      "speakerId": "clerk",
+      "role": "clerk",
+      "kind": "remark",
+      "text": "Claim rejected, 0 to 7. The rule required at least two thirds of the jury. Verdict confidence 0.71. Court is adjourned.",
+      "citations": []
+    }
+  ],
+  "deliberation": [
+    {
+      "round": 1,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "reject",
+          "confidence": 0.68,
+          "belief": 0.392,
+          "reasoning": "The hard data doesn't close the gap. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 39% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "reject",
+          "confidence": 0.86,
+          "belief": 0.365,
+          "reasoning": "This doesn't clear the bar, and the bar matters. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 37% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "reject",
+          "confidence": 0.53,
+          "belief": 0.463,
+          "reasoning": "I believe the witnesses, but what they told us doesn't add up to proof. I went back and forth on this. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E2 (Statement of the support team lead) [E2] cuts the other way, but not far enough. I put the claim at about 46% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E2",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "reject",
+          "confidence": 0.8,
+          "belief": 0.352,
+          "reasoning": "Too much of this case leaned on things the record doesn't say. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 35% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "reject",
+          "confidence": 0.58,
+          "belief": 0.421,
+          "reasoning": "There's a reasonable version of events where the claim is wrong. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 42% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "reject",
+          "confidence": 0.69,
+          "belief": 0.404,
+          "reasoning": "Everyone seems sure. I'm not, and I don't think the record is either. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I put the claim at about 40% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "reject",
+          "confidence": 0.79,
+          "belief": 0.347,
+          "reasoning": "The documents don't line up well enough to sign off on. Exhibit E4 (Pilot design review) [E4] weighs most for me. Exhibit E1 (Tickets closed per week) [E1] cuts the other way, but not far enough. I also noticed the prosecution got caught reaching past the record, and that costs them with me. I put the claim at about 35% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            },
+            {
+              "evidenceId": "E1",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "votes": [
+        {
+          "jurorId": "juror-1",
+          "vote": "reject",
+          "confidence": 0.68,
+          "belief": 0.392,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 39% likely, against a bar of 50%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-2",
+          "vote": "reject",
+          "confidence": 0.86,
+          "belief": 0.367,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 37% likely, against a bar of 58%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-3",
+          "vote": "reject",
+          "confidence": 0.57,
+          "belief": 0.438,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 44% likely, against a bar of 48%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-4",
+          "vote": "reject",
+          "confidence": 0.79,
+          "belief": 0.356,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 36% likely, against a bar of 53%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-5",
+          "vote": "reject",
+          "confidence": 0.6,
+          "belief": 0.412,
+          "reasoning": "I've listened to the room and I'm staying where I was. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 41% likely, against a bar of 47%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-6",
+          "vote": "reject",
+          "confidence": 0.69,
+          "belief": 0.405,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 40% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        },
+        {
+          "jurorId": "juror-7",
+          "vote": "reject",
+          "confidence": 0.78,
+          "belief": 0.351,
+          "reasoning": "Nothing I heard changes my mind. Exhibit E4 (Pilot design review) [E4] still carries the most weight for me. I put the claim at about 35% likely, against a bar of 52%.",
+          "citations": [
+            {
+              "evidenceId": "E4",
+              "valid": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "outcome": "rejected",
+    "rule": "supermajority",
+    "tally": {
+      "uphold": 0,
+      "reject": 7
+    },
+    "confidence": 0.71,
+    "summary": "Claim rejected, 0 to 7. The rule required at least two thirds of the jury. Verdict confidence 0.71."
+  },
+  "stats": {
+    "turns": 45,
+    "citations": 46,
+    "invalidCitations": 1,
+    "objections": 3,
+    "sustained": 2,
+    "overruled": 1,
+    "struckTurns": 2,
+    "impeachments": 3
+  }
+}
