@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist/cli",
+    "declaration": true,
+    "sourceMap": true,
+    "lib": ["ES2022"]
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ataperata/agent-courtroom/schema/transcript.schema.json",
+  "title": "Agent Courtroom transcript",
+  "description": "A complete record of one trial: who spoke, what they cited, every objection and ruling, each juror's votes, and the verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "mode", "engine", "seed", "generatedAt", "case", "evidence", "participants", "turns", "deliberation", "verdict", "stats"],
+  "definitions": {
+    "side": { "enum": ["prosecution", "defense"] },
+    "role": { "enum": ["judge", "prosecution", "defense", "witness", "juror", "clerk"] },
+    "phase": { "enum": ["opening", "evidence", "cross", "closing", "deliberation", "verdict"] },
+    "unit": { "type": "number", "minimum": 0, "maximum": 1 },
+    "evidenceId": { "type": "string", "pattern": "^E[0-9]+$" },
+    "burden": { "enum": ["preponderance", "clear-and-convincing", "beyond-reasonable-doubt"] },
+    "rule": { "enum": ["majority", "supermajority", "unanimous"] },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceId", "valid"],
+      "properties": {
+        "evidenceId": { "$ref": "#/definitions/evidenceId" },
+        "quote": { "type": "string" },
+        "valid": { "type": "boolean" },
+        "issue": { "enum": ["unknown-evidence", "misquote"] }
+      }
+    },
+    "turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seq", "phase", "speakerId", "role", "kind", "text", "citations"],
+      "properties": {
+        "seq": { "type": "integer", "minimum": 1 },
+        "phase": { "$ref": "#/definitions/phase" },
+        "speakerId": { "type": "string" },
+        "role": { "$ref": "#/definitions/role" },
+        "kind": { "enum": ["remark", "instruction", "statement", "question", "answer", "objection", "ruling", "deliberation", "verdict"] },
+        "text": { "type": "string", "minLength": 1 },
+        "citations": { "type": "array", "items": { "$ref": "#/definitions/citation" } },
+        "struck": { "type": "boolean" },
+        "refersTo": { "type": "integer", "minimum": 1 },
+        "objection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["by", "grounds", "detail"],
+          "properties": {
+            "by": { "$ref": "#/definitions/side" },
+            "grounds": { "enum": ["uncited", "unknown-evidence", "misquote"] },
+            "detail": { "type": "string" }
+          }
+        },
+        "ruling": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["outcome", "reason"],
+          "properties": {
+            "outcome": { "enum": ["sustained", "overruled"] },
+            "reason": { "type": "string" }
+          }
+        },
+        "impeachment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["evidenceId", "factor", "conceded"],
+          "properties": {
+            "evidenceId": { "$ref": "#/definitions/evidenceId" },
+            "factor": { "$ref": "#/definitions/unit" },
+            "conceded": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "vote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jurorId", "vote", "confidence", "belief", "reasoning", "citations"],
+      "properties": {
+        "jurorId": { "type": "string" },
+        "vote": { "enum": ["uphold", "reject"] },
+        "confidence": { "$ref": "#/definitions/unit" },
+        "belief": { "$ref": "#/definitions/unit" },
+        "reasoning": { "type": "string" },
+        "citations": { "type": "array", "items": { "$ref": "#/definitions/citation" } }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "id": { "type": "string" },
+    "mode": { "enum": ["demo", "live"] },
+    "engine": { "type": "string" },
+    "seed": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "claim", "background", "burden"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "claim": { "type": "string" },
+        "background": { "type": "string" },
+        "burden": { "$ref": "#/definitions/burden" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "kind", "source", "reliability", "favors", "summary", "quote"],
+        "properties": {
+          "id": { "$ref": "#/definitions/evidenceId" },
+          "title": { "type": "string" },
+          "kind": { "enum": ["log", "data", "document", "testimony", "inspection"] },
+          "source": { "type": "string" },
+          "reliability": { "$ref": "#/definitions/unit" },
+          "favors": { "enum": ["prosecution", "defense", "neutral"] },
+          "summary": { "type": "string" },
+          "quote": { "type": "string" },
+          "weakness": { "type": "string" },
+          "impact": { "$ref": "#/definitions/unit" },
+          "rebuttal": { "type": "string" }
+        }
+      }
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "name"],
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "$ref": "#/definitions/role" },
+          "name": { "type": "string" },
+          "temperament": { "type": "string" }
+        }
+      }
+    },
+    "turns": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/turn" } },
+    "deliberation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["round", "votes"],
+        "properties": {
+          "round": { "type": "integer", "minimum": 1 },
+          "votes": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/vote" } }
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "rule", "tally", "confidence", "summary"],
+      "properties": {
+        "outcome": { "enum": ["upheld", "rejected", "hung"] },
+        "rule": { "$ref": "#/definitions/rule" },
+        "tally": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["uphold", "reject"],
+          "properties": {
+            "uphold": { "type": "integer", "minimum": 0 },
+            "reject": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "confidence": { "$ref": "#/definitions/unit" },
+        "summary": { "type": "string" }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turns", "citations", "invalidCitations", "objections", "sustained", "overruled", "struckTurns", "impeachments"],
+      "properties": {
+        "turns": { "type": "integer", "minimum": 0 },
+        "citations": { "type": "integer", "minimum": 0 },
+        "invalidCitations": { "type": "integer", "minimum": 0 },
+        "objections": { "type": "integer", "minimum": 0 },
+        "sustained": { "type": "integer", "minimum": 0 },
+        "overruled": { "type": "integer", "minimum": 0 },
+        "struckTurns": { "type": "integer", "minimum": 0 },
+        "impeachments": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

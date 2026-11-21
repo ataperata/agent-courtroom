@@ -1,0 +1,36 @@
+{
+  "name": "agent-courtroom",
+  "version": "1.0.0",
+  "description": "Multi-agent trial: prosecutor, defense, judge and jury agents argue a claim with evidence",
+  "author": "Ata Perata",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "courtroom": "dist/cli/cli.js"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "build": "npm run build:cli && npm run build:web",
+    "build:cli": "tsc -p tsconfig.build.json",
+    "build:web": "vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo": "tsx src/cli.ts demo",
+    "trial": "tsx src/cli.ts run",
+    "viewer": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^3.2.4"
+  }
+}
